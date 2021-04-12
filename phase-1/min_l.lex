@@ -4,7 +4,7 @@
 %}
 
 NUM [0-9]
-ID [a-zA-Z_][a-zA-Z0-9_]*
+ID [a-zA-Z][a-zA-Z0-9]*|[a-zA-Z]_[a-zA-Z0-9]+
 
 %%
 
@@ -59,7 +59,7 @@ ID [a-zA-Z_][a-zA-Z0-9_]*
 "]"             { printf("R_SQUARE_BRACKET\n"); currPos += yyleng; }
 ":="            { printf("ASSIGN\n"); currPos += yyleng; }
 
-{ID}+           { printf("NUMBER %s\n", yytext); currPos += yyleng; }
+{ID}+           { printf("IDENTIFIER %s\n", yytext); currPos += yyleng; }
 {NUM}+          { printf("NUMBER %s\n", yytext); currPos += yyleng; }
 
 [ \t]+          { currPos += yyleng; }
@@ -68,7 +68,9 @@ ID [a-zA-Z_][a-zA-Z0-9_]*
 
 "##".*          { /* Ignore comments */ currLine++; }
 
-.               { printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0); }
+{NUM}+{ID}+/[ \t]*":"   { printf("Error at line %d, column %d: identifier \"%s\" must begin with a letter\n", currLine, currPos, yytext); exit(0); }
+{ID}+"_"/[ \t]*":"      { printf("Error at line %d, column %d: identifier \"%s\" cannot end with an underscore\n", currLine, currPos, yytext); exit(0); }
+.                       { printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0); }
 
 %%
 

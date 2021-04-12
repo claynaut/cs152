@@ -1,0 +1,7 @@
+FUNCTION
+IDENTIFIER test2
+SEMICOLON
+BEGIN_PARAMS
+END_PARAMS
+BEGIN_LOCALS
+Error at line 6, column 5: identifier "n_" cannot end with an underscore
