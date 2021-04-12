@@ -66,7 +66,7 @@ ID [a-zA-Z_][a-zA-Z0-9_]*
 
 "\n"            { currLine++; currPos = 1; }
 
-"##".*          { currLine++; }
+"##".*          { /* Ignore comments */ currLine++; }
 
 .               { printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0); }
 
