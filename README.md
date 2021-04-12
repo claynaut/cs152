@@ -7,4 +7,4 @@ This project consists of three phases:
 2. Syntax Analyzer 
 3. Code Generator
 
-More information can found in each project phase's respective directory (i.e. `/phase-[number]`).
+More information can found for each phase in its respective directory (i.e. `/phase-[number]`).
