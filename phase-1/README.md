@@ -16,9 +16,9 @@ The lexical analyzer can be invoked by the following command.
 ## Example Outputs
 A list of tokens the lexical analyzer can identify are specified [here](https://www.cs.ucr.edu/~mafar001/compiler/webpages1/token_list_format.html).
 
-Test files for this project can be found as .min files (e.g. fibonnaci.min). 
+Test files for this project can be found as .min files (e.g. `fibonnaci.min`). 
 
-Outputs for the test files can be found as .txt files (e.g. fibonnaci_output.txt).
+Outputs for the test files can be found as .txt files (e.g. `fibonnaci_output.txt`).
 
 ## Example Outputs for Lexical Errors
 #### Unrecognizable Symbols
