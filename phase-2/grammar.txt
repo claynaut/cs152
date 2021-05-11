@@ -1,0 +1,81 @@
+program:                    functions
+
+functions:                  FUNCTION functions
+                            | FUNCTION IDENTIFIER SEMICOLON BEGINPARAMS declarations ENDPARAMS BEGINLOCALS declarations ENDLOCALS BEGINBODY statements ENDBODY
+                            | epsilon
+
+declarations:               DECLARATION SEMICOLON declarations
+                            | identifiers COLON declaration-params INTEGER
+                            | epsilon
+
+identifiers:                IDENTIFIER COMMA identifiers
+                            | epsilon
+
+declaration-params:         ENUM L_PAREN identifiers R_PAREN
+                            | ARRAY L_SQUARE_BRACKET NUM R_SQUARE_BRACKET OF
+                            | epsilon
+
+statements:                 STATEMENT SEMICOLON statements
+                            | var ASSIGN expr
+                            | IF bool-expr THEN statements ELSE statements ENDIF
+                            | WHILE bool-expr BEGINLOOP statements ENDLOOP
+                            | DO BEGINLOOP statements ENDLOOP WHILE bool-expr
+                            | READ vars
+                            | WRITE vars
+                            | CONTINUE
+                            | RETURN expr
+                            | epsilon
+
+vars:                       var COMMA vars
+                            | epsilon
+                    
+var:                        IDENTIFIER
+                            | IDENTIFIER L_SQUARE_BRACKET expr R_SQUARE_BRACKET
+
+bool-expr:                  relation-and-expr bool-expr-params
+
+bool-expr-params:           OR relation-and-expr bool-expr-params
+                            | epsilon
+
+relation-and-expr:          relation-expr relation-and-expr-params
+
+relation-and-expr-params:   AND relation-expr relation-and-expr-params
+                            | epsilon
+                        
+relation-expr:              NOT relation-exprs
+                            | relation exprs
+
+relation-exprs:             expr comp expr
+                            | TRUE
+                            | FALSE
+                            | L_PAREN bool-expr R_PAREN
+
+comp:                       EQ
+                            | NEQ
+                            | LT
+                            | GT
+                            | LTE
+                            | GTE
+
+expr:                       mult-expr expr-params
+
+expr-params:                ADD mult-expr expr-params
+                            | SUB mult-expr expr-params
+                            | epsilon
+
+mult-expr:                  term mult-expr-params
+
+mult-expr-params:           MULT term mult-expr-params
+                            | DIV term mult-expr-params
+                            | MOD term mult-expr-params
+                            | epsilon
+
+term:                       SUB terms
+                            | IDENTIFIER L_PAREN exprs R_PAREN
+
+terms:                      var
+                            | NUMBER
+                            | L_PAREN expr R_PAREN
+
+exprs:                      expr COMMA exprs
+                            | epsilon

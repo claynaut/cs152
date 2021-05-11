@@ -4,7 +4,7 @@ This is Phase 1 for a compiler project for CS152. Original specifications are au
 ## Prerequisites
 
 Run flex to generate the lexical analyzer for MINI-L. 
-- Example: `flex min_l.lex`
+- Example: `flex mini_l.lex`
 
 Compile the MINI-L lexical analyzer. 
 - Example: `gcc -o lexer lex.yy.c -lfl`
