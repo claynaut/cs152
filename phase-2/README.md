@@ -3,7 +3,7 @@ This is Phase 2 for a compiler project for CS152. Original specifications are au
 
 
 ## Grammar for the MINI-L Language
-The grammar is derived from the syntax diagrams provided by the TA, located [here](https://www.cs.ucr.edu/~mafar001/compiler/webpages2/syntax.html). 
+The grammar is derived from the syntax diagrams provided by the TA, located [here](https://www.cs.ucr.edu/~mafar001/compiler/webpages2/syntax.html). The grammar specification can be seen in detail in `grammar.txt`.
 
 ## Prerequisites
 
