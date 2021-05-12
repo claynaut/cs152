@@ -44,12 +44,12 @@ declarations                : declaration SEMICOLON declarations                
                             | /* epsilon */                                         { printf("declarations -> epsilon\n"); }
                             ;
 
-declaration                 : identifiers COLON declaration_params INTEGER          { printf("declaration -> identifiers COLON INTEGER\n"); }
+declaration                 : identifiers COLON declaration_params INTEGER          { printf("declaration -> identifiers COLON declaration_params INTEGER\n"); }
                             ;
 
-declaration_params          : ENUM L_PAREN identifiers R_PAREN
-                            | ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF
-                            | /* epsilon */
+declaration_params          : ENUM L_PAREN identifiers R_PAREN                      { printf("declaration_params -> ENUM L_PAREN identifiers R_PAREN\n"); }
+                            | ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF     { printf("declaration_params -> ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF\n"); }
+                            | /* epsilon */                                         { printf("declaration_params -> epsilon\n"); }
                             ;
 
 identifiers                 : IDENTIFIER identifiers                                { printf("identifiers -> IDENTIFIER identifiers\n"); }
@@ -114,21 +114,21 @@ comp                        : EQ                                                
                             | GTE                                                   { printf("comp -> GTE\n"); }
                             ;
 
-expr                        : mult_expr expr_params                                 { printf("expr -> mult_expr expr_params\n"); }
+expr                        : mult_expr expr_ops                                    { printf("expr -> mult_expr expr_ops\n"); }
                             ;
 
-expr_params                 : ADD mult_expr expr_params                             { printf("expr_params -> ADD mult_expr expr_params\n"); }
-                            | SUB mult_expr expr_params                             { printf("expr_params -> SUB mult_expr expr_params\n"); }
-                            | /* epsilon */                                         { printf("expr_params -> epsilon\n"); }
+expr_ops                    : ADD mult_expr expr_ops                                { printf("expr_ops -> ADD mult_expr expr_ops\n"); }
+                            | SUB mult_expr expr_ops                                { printf("expr_ops -> SUB mult_expr expr_ops\n"); }
+                            | /* epsilon */                                         { printf("expr_ops -> epsilon\n"); }
                             ;
 
-mult_expr                   : term mult_expr_params                                 { printf("mult_expr -> term mult_expr_params\n"); }
+mult_expr                   : term mult_expr_ops                                    { printf("mult_expr -> term mult_expr_ops\n"); }
                             ;
 
-mult_expr_params            : MULT term mult_expr_params                            { printf("mult_expr_params -> MULT term mult_expr_params \n"); }
-                            | DIV term mult_expr_params                             { printf("mult_expr_params -> DIV term mult_expr_params \n"); }
-                            | MOD term mult_expr_params                             { printf("mult_expr_params -> MOD term mult_expr_params \n"); }
-                            | /* epsilon */                                         { printf("mult_expr_params -> epsilon\n"); }
+mult_expr_ops               : MULT term mult_expr_ops                               { printf("mult_expr_ops -> MULT term mult_expr_ops \n"); }
+                            | DIV term mult_expr_ops                                { printf("mult_expr_ops -> DIV term mult_expr_ops \n"); }
+                            | MOD term mult_expr_ops                                { printf("mult_expr_ops -> MOD term mult_expr_ops \n"); }
+                            | /* epsilon */                                         { printf("mult_expr_ops -> epsilon\n"); }
                             ;
 
 term                        : terms                                                 { printf("term -> terms\n"); }
