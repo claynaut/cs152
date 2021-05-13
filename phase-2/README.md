@@ -3,21 +3,12 @@ This is Phase 2 for a compiler project for CS152. Original specifications are au
 
 
 ## Grammar for the MINI-L Language
-The grammar is derived from the syntax diagrams provided by the TA, located [here](https://www.cs.ucr.edu/~mafar001/compiler/webpages2/syntax.html). The grammar specification can be seen in detail in `grammar.txt`.
+The grammar is derived from the syntax diagrams provided by the TA, located [here](https://www.cs.ucr.edu/~mafar001/compiler/webpages2/syntax.html). The grammar specification can be seen in detail in `mini_l_grammar.pdf`.
 
 ## Prerequisites
 
-Run flex to generate the lexical analyzer for MINI-L. 
-- Example: `flex mini_l.lex`
-
-Compile the MINI-L lexical analyzer. 
-- Example: `gcc -o lexer lex.yy.c -lfl`
-
-Run bison to generate the necessary files for the parser for MINI-L.
-- Example: `bison -v -d --file-prefix=y mini_l.y`
-
-Compile the MINI-L parser.
-- Example: `gcc -o parser y.tab.c lex.yy.c -lfl`
+Run the Makefile to generate the necessary files. 
+- Example: `make`
 
 ## Usage
 The parser can be invoked by the following command.
