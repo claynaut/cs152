@@ -4,18 +4,15 @@ This is Phase 3 for a compiler project for CS152. Original specifications are au
 
 ## Prerequisites
 
-Run flex to generate the lexical analyzer for MINI-L. 
-- Example: `flex mini_l.lex`
-
-Compile the MINI-L lexical analyzer. 
-- Example: `gcc -o lexer lex.yy.c -lfl`
-
-Run bison to generate the necessary files for the parser.
-- Example: `bison -v -d --file-prefix=y mini_l.y`
-
-Gernate the compiler.
-- Example: `gcc -o compiler y.tab.c lex.yy.c -lfl`
+Run the Makefile to generate the necessary files. 
+- Example: `make`
 
 ## Usage
-The parser can be invoked by the following command.
-- Example: `cat [.min file] | compiler`
+The parser can be invoked by the following command. This will then generate the MIL code of the chosen .min file.
+- Example: `cat [.min file] | parser`
+
+The MIL code can then be executed with the given MIL interpreter `mil_run`.
+- Example: `mil_run mil_code.mil`
+
+The MIL code requires input data which can be written to a file. For example, the input values can be written to a file named `input.txt`.
+- Example: `mil_run mil_code.mil < input.txt`
