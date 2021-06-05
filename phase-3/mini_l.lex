@@ -60,8 +60,8 @@ ID [a-zA-Z][a-zA-Z0-9]*|[a-zA-Z]_[a-zA-Z0-9]+
 "]"             { currPos += yyleng; return R_SQUARE_BRACKET; }
 ":="            { currPos += yyleng; return ASSIGN; }
 
-{ID}+           { currPos += yyleng; return IDENTIFIER; }
-{NUM}+          { currPos += yyleng; return NUMBER; }
+{ID}+           { currPos += yyleng; yylval.ident = yytext; return IDENTIFIER; }
+{NUM}+          { currPos += yyleng; yylval.num = atoi(yytext); return NUMBER; }
 
 [ \t]+          { currPos += yyleng; }
 

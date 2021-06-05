@@ -8,24 +8,26 @@
 %}
 
 %union {
-    double dval;
     int ival;
+    char* ident;
 }
 
 %start program
 %token SUB ADD MULT DIV MOD
 %token EQ NEQ LT GT LTE GTE
-%token SEMICOLON COLON COMMA L_PAREN R_PAREN L_SQUARE_BRACKET R_SQUARE_BRACKET ASSIGN
+%token SEMICOLON COLON COMMA L_PAREN R_PAREN L_SQUARE_BRACKET R_SQUARE_BRACKET
 %token FUNCTION BEGIN_PARAMS END_PARAMS BEGIN_LOCALS END_LOCALS BEGIN_BODY END_BODY
 %token ARRAY ENUM OF IF THEN ENDIF ELSE WHILE DO BEGINLOOP ENDLOOP CONTINUE READ WRITE
-%token AND OR TRUE FALSE RETURN
-%token IDENTIFIER
-%token <dval> NUMBER
+%token TRUE FALSE RETURN
+%token <ident> IDENTIFIER
+%token <ival> NUMBER
 %token <ival> INTEGER
 %left SUB ADD 
 %left MULT DIV MOD
 %right EQ NEQ LT GT LTE GTE
+%left AND OR
 %right NOT
+%right ASSIGN
 
 %%
 
@@ -36,7 +38,7 @@ functions                   : function functions                                
                             | /* epsilon */                                         { printf("functions -> epsilon\n"); }
                             ;
     
-function                    : FUNCTION IDENTIFIER SEMICOLON 
+function                    : FUNCTION identifiers SEMICOLON 
                               BEGIN_PARAMS declarations END_PARAMS 
                               BEGIN_LOCALS declarations END_LOCALS 
                               BEGIN_BODY statements END_BODY                        { printf("function -> FUNCTION IDENTIFIER SEMICOLON BEGIN_PARAMS declarations END_PARAMS BEGIN_LOCALS BEGIN_BODY statements END_BODY\n"); }
