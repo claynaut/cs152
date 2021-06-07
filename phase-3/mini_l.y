@@ -9,10 +9,8 @@
     #include <vector>
     #include <string>
 
-    namespace patch // used to solve a bug that doesn't recognize std::to_string
-    {
-        template < typename T > std::string to_string( const T& n )
-        {
+    namespace patch { // used to solve a bug that doesn't recognize std::to_string
+        template < typename T > std::string to_string( const T& n ) {
             std::ostringstream stm;
             stm << n;
             return stm.str();
