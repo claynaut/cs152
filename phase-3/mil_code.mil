@@ -7,7 +7,7 @@ func fibonacci
 = t1, 1
 . t2
 <= t2, t0, t1
-?: L0, t2
+: L0, t2
 := L1
 : L0
 . t3
