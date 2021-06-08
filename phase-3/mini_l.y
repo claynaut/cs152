@@ -229,7 +229,7 @@ bool_expr_params            : OR relation_and_expr bool_expr_params
                                 std::string label = makeLabel();
                                 output += ". " + temp + "\n";
                                 output += "|| " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                output += ": " + label + ", " + temp + "\n";
+                                output += "?:= " + label + ", " + temp + "\n";
                                 output += ":= " + makeLabel() + "\n";
                                 output += ": " + label + "\n";
                             }
@@ -245,7 +245,7 @@ relation_and_expr_params    : AND relation_expr relation_and_expr_params
                                 std::string label = makeLabel();
                                 output += ". " + temp + "\n";
                                 output += "&& " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                output += ": " + label + ", " + temp + "\n";
+                                output += "?:= " + label + ", " + temp + "\n";
                                 output += ":= " + makeLabel() + "\n";
                                 output += ": " + label + "\n";
                             }
@@ -259,7 +259,7 @@ relation_expr               : relation_exprs                                    
                                 std::string label = makeLabel();
                                 output += ". " + temp + "\n";
                                 output += "! " + temp + ", t" + patch::to_string(numTemps-2) + "\n";
-                                output += ": " + label + ", " + temp + "\n";
+                                output += "?:= " + label + ", " + temp + "\n";
                                 output += ":= " + makeLabel() + "\n";
                                 output += ": " + label + "\n";
                             }
@@ -305,7 +305,7 @@ expr                        : mult_expr expr_ops
                                     std::string label = makeLabel();
                                     output += ". " + temp + "\n";
                                     output += "== " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                    output += ": " + label + ", " + temp + "\n";
+                                    output += "?:= " + label + ", " + temp + "\n";
                                     output += ":= " + makeLabel() + "\n";
                                     output += ": " + label + "\n";
                                 }
@@ -315,7 +315,7 @@ expr                        : mult_expr expr_ops
                                     std::string label = makeLabel();
                                     output += ". " + temp + "\n";
                                     output += "!= " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                    output += ": " + label + ", " + temp + "\n";
+                                    output += "?:= " + label + ", " + temp + "\n";
                                     output += ":= " + makeLabel() + "\n";
                                     output += ": " + label + "\n";
                                 }
@@ -325,7 +325,7 @@ expr                        : mult_expr expr_ops
                                     std::string label = makeLabel();
                                     output += ". " + temp + "\n";
                                     output += "< " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                    output += ": " + label + ", " + temp + "\n";
+                                    output += "?:= " + label + ", " + temp + "\n";
                                     output += ":= " + makeLabel() + "\n";
                                     output += ": " + label + "\n";
                                 }
@@ -335,7 +335,7 @@ expr                        : mult_expr expr_ops
                                     std::string label = makeLabel();
                                     output += ". " + temp + "\n";
                                     output += "> " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                    output += ": " + label + ", " + temp + "\n";
+                                    output += "?:= " + label + ", " + temp + "\n";
                                     output += ":= " + makeLabel() + "\n";
                                     output += ": " + label + "\n";
                                 }
@@ -345,7 +345,7 @@ expr                        : mult_expr expr_ops
                                     std::string label = makeLabel();
                                     output += ". " + temp + "\n";
                                     output += "<= " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                    output += ": " + label + ", " + temp + "\n";
+                                    output += "?:= " + label + ", " + temp + "\n";
                                     output += ":= " + makeLabel() + "\n";
                                     output += ": " + label + "\n";
                                 }
@@ -355,7 +355,7 @@ expr                        : mult_expr expr_ops
                                     std::string label = makeLabel();
                                     output += ". " + temp + "\n";
                                     output += ">= " + temp + ", t" + patch::to_string(numTemps-3) + ", t" + patch::to_string(numTemps-2) + "\n";
-                                    output += ": " + label + ", " + temp + "\n";
+                                    output += "?:= " + label + ", " + temp + "\n";
                                     output += ":= " + makeLabel() + "\n";
                                     output += ": " + label + "\n";
                                 }
